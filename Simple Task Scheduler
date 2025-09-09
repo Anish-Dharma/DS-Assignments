@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Node {
+public:
+    string taskname;
+    int priority;
+    int exetime;
+    Node* next;
+
+    Node(string tn, int p, int e) {
+        taskname = tn;
+        priority = p;
+        exetime = e;
+        next = NULL;
+    }
+
+    // Display task details
+    void display() {
+        cout << "Task name: " << taskname << endl;
+        cout << "Priority: " << priority << endl;
+        cout << "Execution time: " << exetime << endl;
+        cout << "------------------------" << endl;
+    }
+};
+
+int main() {
+    int n;
+    string taskname;
+    int priority, exetime;
+    Node* header = NULL;
+    Node* temp = NULL;
+    Node* t = NULL;
+
+    cout << "Enter the number of tasks you want to insert: ";
+    cin >> n;
+    cin.ignore();
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter task name: ";
+        getline(cin, taskname);  // allows multi-word names
+        cout << "Enter priority: ";
+        cin >> priority;
+        cout << "Enter execution time: ";
+        cin >> exetime;
+        cin.ignore(); 
+
+        temp = new Node(taskname, priority, exetime);
+
+        if (header == NULL || temp->priority > header->priority) {
+            temp->next = header;
+            header = temp;
+        } else {
+            t = header;
+            while (t->next != NULL && t->next->priority >= temp->priority) {
+                t = t->next;
+            }
+            temp->next = t->next;
+            t->next = temp;
+        }
+    }
+
+    cout << "\n----- Task List -----\n";
+    t = header;
+    while (t != NULL) {
+        t->display();
+        t = t->next;
+    }
+    
+    while (header != NULL) {
+        temp = header;
+        header = header->next;
+        delete temp;
+    }
+
+    return 0;
+}
