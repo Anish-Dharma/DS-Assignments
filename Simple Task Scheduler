@@ -16,12 +16,12 @@ public:
         next = NULL;
     }
 
-    // Display task details
     void display() {
-        cout << "Task name: " << taskname << endl;
+		cout << "Task "<< taskname << " scheduled at priority no. " << priority << " with execution time " << exetime << " ms" << endl; 
+        /*cout << "Task name: " << taskname << endl;
         cout << "Priority: " << priority << endl;
         cout << "Execution time: " << exetime << endl;
-        cout << "------------------------" << endl;
+        cout << "------------------------" << endl;*/
     }
 };
 
@@ -39,7 +39,7 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         cout << "\nEnter task name: ";
-        getline(cin, taskname);  // allows multi-word names
+        getline(cin, taskname); 
         cout << "Enter priority: ";
         cin >> priority;
         cout << "Enter execution time: ";
@@ -73,6 +73,7 @@ int main() {
         header = header->next;
         delete temp;
     }
-
+	cout<<"All tasks executed"<<endl;
+	
     return 0;
 }
