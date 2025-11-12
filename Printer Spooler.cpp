@@ -24,13 +24,9 @@ public:
         rear = -1;
     }
 
-    int isFull() {
-        return ((rear + 1) % SIZE == front);
-    }
+    int isFull() {return ((rear + 1) % SIZE == front);}
 
-    int isEmpty() {
-        return (front == -1 && rear == -1);
-    }
+    int isEmpty() {return (front == -1 && rear == -1);}
 
     void addJob(string job) {
         if (isFull()) {
@@ -38,10 +34,10 @@ public:
             return;
         }
         if (isEmpty()) {
-            front = rear = 0;
-        } else {
-            rear = (rear + 1) % SIZE;
-        }
+            front = rear = 0;}
+        else {
+            rear = (rear + 1) % SIZE;}
+
         jobQueue[rear] = job;
         cout << "Print job " << job << " added to spooler" << endl;
     }
@@ -49,31 +45,29 @@ public:
     void processJob() {
         if (isEmpty()) {
             cout << "Spooler is empty! No jobs to process" << endl;
-            return;
-        }
+            return;}
+
         cout << "Processed print job " << jobQueue[front] << endl;
 
         if (front == rear) {
-            front = rear = -1;
-        } else {
-            front = (front + 1) % SIZE;
-        }
+            front = rear = -1;}
+        else {
+            front = (front + 1) % SIZE;}
     }
 
     void displayJobs() {
         if (isEmpty()) {
             cout << "No print jobs in spooler." << endl;
-            return;
-        }
-    
+            return;}
+
         cout << "Current print jobs in spooler: ";
-    
+
         int i = front;
         do {
             cout << jobQueue[i] << " ";
-            i = (i + 1) % SIZE;
-        } while (i != (rear + 1) % SIZE);
-    
+            i = (i + 1) % SIZE;}
+        while (i != (rear + 1) % SIZE);
+
         cout << endl;
     }
 
