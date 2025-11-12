@@ -34,7 +34,7 @@ public:
 
     void addJob(string job) {
         if (isFull()) {
-            cout << "Spooler is full! Cannot add job \"" << job << "\"." << endl;
+            cout << "Spooler is full! Cannot add job " << job <<endl;
             return;
         }
         if (isEmpty()) {
@@ -43,15 +43,15 @@ public:
             rear = (rear + 1) % SIZE;
         }
         jobQueue[rear] = job;
-        cout << "Print job \"" << job << "\" added to spooler." << endl;
+        cout << "Print job " << job << " added to spooler" << endl;
     }
 
     void processJob() {
         if (isEmpty()) {
-            cout << "Spooler is empty! No jobs to process." << endl;
+            cout << "Spooler is empty! No jobs to process" << endl;
             return;
         }
-        cout << "Processed print job \"" << jobQueue[front] << endl;
+        cout << "Processed print job " << jobQueue[front] << endl;
 
         if (front == rear) {
             front = rear = -1;
@@ -62,7 +62,7 @@ public:
 
     void displayJobs() {
         if (isEmpty()) {
-            cout << "No print jobs in spooler." << endl;
+            cout << "No print jobs in spooler" << endl;
             return;
         }
         cout << "Current print jobs in spooler: ";
