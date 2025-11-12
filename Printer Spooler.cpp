@@ -51,8 +51,7 @@ public:
             cout << "Spooler is empty! No jobs to process." << endl;
             return;
         }
-        cout << "Processing print job \"" << jobQueue[front] << "\"..." << endl;
-        cout << "Job \"" << jobQueue[front] << "\" completed successfully!" << endl;
+        cout << "Processed print job \"" << jobQueue[front] << endl;
 
         if (front == rear) {
             front = rear = -1;
