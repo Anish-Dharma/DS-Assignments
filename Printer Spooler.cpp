@@ -62,19 +62,21 @@ public:
 
     void displayJobs() {
         if (isEmpty()) {
-            cout << "No print jobs in spooler" << endl;
+            cout << "No print jobs in spooler." << endl;
             return;
         }
+    
         cout << "Current print jobs in spooler: ";
+    
         int i = front;
-        while (true) {
-            cout << jobQueue[i];
-            if (i == rear) break;
-            cout << " , ";
+        do {
+            cout << jobQueue[i] << " ";
             i = (i + 1) % SIZE;
-        }
+        } while (i != (rear + 1) % SIZE);
+    
         cout << endl;
     }
+
 };
 
 int main() {
